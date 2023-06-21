@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\TblPrograma;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProgramaController;
 
@@ -21,6 +23,8 @@ Route::get('/', function () {
 
 //controladar de recursos
 Route::resource('programas', ProgramaController::class);
+
+// Route::resource('editarprograma','TblPrograma');
 
 // Route::get('/programas/crearprograma', function() {
 //     return view('crearprograma');

@@ -4,6 +4,7 @@
 
 @section('content_header')
     <h1>Listas de programas: </h1>
+    
 @stop
 
 @section('content')
@@ -42,9 +43,10 @@
                         <td>{{$programa->prog_Descripcion}}</td>
                         <td>{{$programa->prog_DuracionMeses}}</td>
                         <td>
-                            <a href="" class="btn btn-primary">Editar</a>
 
-                            <form action="{{ route('programas.destroy',$programas) }}" method="POST" class="d-inline">
+                            <a href="{{ route('programas.edit', $programa) }}" class="btn btn-primary">Editar</a>
+
+                            <form action="{{ route('programas.destroy', $programa) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Eliminar</button>

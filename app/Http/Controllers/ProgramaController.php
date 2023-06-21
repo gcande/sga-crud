@@ -55,30 +55,67 @@ class ProgramaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TblPrograma $tblPrograma):View
+    public function edit(TblPrograma $tblPrograma, string $Codigo):View
     {
-        // dd($tblPrograma);
+        // dd($tblPrograma->all()) ;      
+        // return view('editarprograma', ['tblPrograma'=>$tblPrograma]);
+
+        // dd($tblPrograma->where('Codigo', $Codigo)->get() );
+
+        $dato = $tblPrograma->where('Codigo', $Codigo)->get();        
         
-        return view('editarprograma', ['tblPrograma'=>$tblPrograma]);
+        return view('editarprograma', ['programa'=> $dato]);
+        
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TblPrograma $tblPrograma):RedirectResponse
-    {
-        // dd($request->all());
-        $tblPrograma->update($request->all());
-        return redirect()->route('programas.index')->with('success','Programa Actualizado Exitoxamente¡');
+    public function update(Request $request, string $id)
+     {
+        // $tblPrograma->update($request->all());
+        // return redirect()->route('programas.index')->with('success','Programa Actualizado Exitoxamente¡');
 
+        // dd( TblPrograma::find($id) );
+        // dd( $request -> input() );
+
+        // validacion de los input requeridos  
+        $request->validate([
+            'prog_Denominacion' => 'required',
+            'prog_Estado' => 'required',
+            'prog_HorasEstimadas' => 'required',
+            'prog_Creditos' => 'required'
+        ]);  
+
+        $programa = TblPrograma::find( $id );
+
+        $programa->prog_Denominacion = $request->prog_Denominacion;
+        $programa->prog_version = $request->prog_version;
+        $programa->prog_Estado = $request->prog_Estado;
+        $programa->prog_HorasEstimadas = $request->prog_HorasEstimadas;
+        $programa->prog_Creditos = $request->prog_Creditos;
+        $programa->prog_Descripcion = $request->prog_Descripcion;
+        $programa->prog_DuracionMeses = $request->prog_DuracionMeses;
+        
+        if( $programa->save() ) {
+         return view('home')->with('success','Programa Actualizado');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TblPrograma $tblPrograma)
+    public function destroy(string $id)
     {
-        $tblPrograma->delete();
-        return redirect()->route('programas.index');
+        // $tblPrograma->delete();
+        // return redirect()->route('programas.index');
+
+        
+        $programa = TblPrograma::find($id);
+        // dd(TblPrograma::find($id));
+
+        $programa->delete();
+        return redirect()->route('programas.index')->with('success','Programa eliminado exitosamente') ;
+        
     }
 }
