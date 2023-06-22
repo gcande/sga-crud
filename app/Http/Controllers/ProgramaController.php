@@ -14,7 +14,7 @@ class ProgramaController extends Controller
      */
     public function index():View
     {
-        $programas = TblPrograma::latest()->paginate(5);
+        $programas = TblPrograma::get();
         return view('programas',['programas' => $programas]);
     }
 
