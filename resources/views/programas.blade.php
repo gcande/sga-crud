@@ -56,12 +56,13 @@
                         <td>{{$programa->prog_Creditos}}</td>
                         <td>{{$programa->prog_Descripcion}}</td>
                         <td>{{$programa->prog_DuracionMeses}}</td>
+
                         <td class="d-flex">
-                            <a href="{{ route('programas.edit', $programa) }}" class="btn btn-primary btn-sm mr-2">Editar</a>
-                            <form action="{{ route('programas.destroy', $programa) }}" method="POST" class="d-inline">
+                            <a href="{{ route('programas.edit', $programa) }}" class="btn btn-primary btn-sm mr-2" onclick="">Editar</a>
+                            <form action="{{ route('programas.destroy', $programa) }}" method="POST" class="d-inline" >
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar?')">Eliminar</button>
                             </form>
                         </td>
                     </tr>           
