@@ -22,52 +22,51 @@
             </div>
         @endif
 
-        <form action="{{route('programas.store')}}" method="POST">
-            @csrf
-            <div class="row mb-3">
-                <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
-                    <div class="form-group">
-                        <strong>Programa:</strong>
+        <form action="{{route('programas.store')}}" method="POST" >
+            @csrf            
+                <div class="row g-3">                    
+                    <div class="col-md-6">
+                        <label>Programa:</label>
                         <input type="text" name="prog_Denominacion" class="form-control" placeholder="Programa" >
                     </div>
-                    <div class="form-group">
-                        <strong>Versión:</strong>
+                    <div class="col-md-6">
+                        <label>Versión:</label>
                         <input type="number" name="prog_Version" class="form-control" placeholder="Versión" >
                     </div>
-                    <div class="form-group">
-                        <strong>Estado:</strong>
-                        <input type="text" name="prog_Estado" class="form-control" placeholder="Estado" >
+
+                    <div class="col-md-3">
+                        {{-- <strong>Estado:</strong>
+                        <input type="text" name="prog_Estado" class="form-control" placeholder="Estado" > --}}
+                        <label class="form-label">Estado:</label>
+                        <select name="prog_Estado" class="form-select" id="">
+                            <option selected value=""> Elige el estado </option>
+                            <option class="bg-success" value="Activo">Activo</option>
+                            <option class="bg-danger" value="Inactivo">Inactivo</option>
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <strong>Horas:</strong>
+                    <div class="col-md-3">
+                        <label>Horas:</label>
                         <input type="number" name="prog_HorasEstimadas" class="form-control" placeholder="Horas" >
                     </div>
-                    <div class="form-group">
-                        <strong>Creditos:</strong>
+                    <div class="col-md-3">
+                        <label>Creditos:</label>
                         <input type="number" name="prog_Creditos" class="form-control" placeholder="Creditos" >
                     </div>
-                    <div class="form-group">
-                        <strong>Descripción:</strong>
+                    <div class="col-md-3">
+                        <label>Meses:</label>
+                        <input type="number" name="prog_DuracionMeses" class="form-control" placeholder="Meses" >
+                    </div>
+                    <div class="col-md-12">
+                        <label>Descripción:</label>
                         <textarea class="form-control" style="height:100px" name="prog_Descripcion" placeholder="Descripción..."></textarea>
                     </div>
 
-                    <div class="form-group">
-                        <strong>Meses:</strong>
-                        <input type="number" name="prog_DuracionMeses" class="form-control" placeholder="Meses" >
-                    </div>
                     
-                </div>
-                {{-- <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
-                    <div class="form-group">
-                        <strong>Descripción:</strong>
-                        <textarea class="form-control" style="height:100px" name="prog_Descripcion" placeholder="Descripción..."></textarea>
-                    </div>
-                </div>                       --}}
+                </div>               
                 
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
                     <button type="submit" class="btn btn-primary">Crear</button>
-                </div>
-            </div>
+                </div>            
         </form>
 
         {{-- <p>{{ $input }}</p> --}}
@@ -75,5 +74,6 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 @stop

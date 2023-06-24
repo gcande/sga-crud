@@ -34,7 +34,6 @@ class ProgramaController extends Controller
         // validacion de los input requeridos  
         $request->validate([
             'prog_Denominacion' => 'required',
-            'prog_Estado' => 'required',
             'prog_HorasEstimadas' => 'required',
             'prog_Creditos' => 'required'
         ]);        
@@ -82,7 +81,6 @@ class ProgramaController extends Controller
         // validacion de los input requeridos  
         $request->validate([
             'prog_Denominacion' => 'required',
-            'prog_Estado' => 'required',
             'prog_HorasEstimadas' => 'required',
             'prog_Creditos' => 'required'
         ]);  

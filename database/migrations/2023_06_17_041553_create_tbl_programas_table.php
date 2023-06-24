@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('Codigo');
             $table->string('prog_Denominacion',300);
             $table->integer('prog_version');
-            $table->string('prog_Estado',50);
+            $table->enum('prog_Estado',['Activo','Inactivo'])->nullable();
             $table->string('prog_HorasEstimadas',45);
             $table->string('prog_Creditos',45);
             $table->string('prog_Descripcion',1000);
