@@ -334,20 +334,20 @@ return [
         ],
         [
             'text' => 'Programas',
-            // 'route'  => 'programas',
-            'icon' => 'fas fa-graduation-cap',
-            'submenu' => [
-                        [
-                            'text' => 'Ver Programas',
-                            'url'  => 'programas',
-                        ],
-                        [
-                            'text' => 'Crear programa',
-                            'icon' => 'fas fa-pen',
-                            'url'  => 'programas/create',
-                        ],
+            'url'  => 'programas',
+            'icon' => 'fas fa-graduation-cap'
+            // 'submenu' => [
+            //             [
+            //                 'text' => 'Ver Programas',
+            //                 'url'  => 'programas',
+            //             ],
+            //             [
+            //                 'text' => 'Crear programa',
+            //                 'icon' => 'fas fa-pen',
+            //                 'url'  => 'programas/create',
+            //             ],
             
-            ]
+            // ]
         ],
         [
             'text' => 'Fichas',
@@ -366,7 +366,7 @@ return [
         ],
         [
             'text' => 'Horarios',
-            'url'  => '/',
+            'url'  => 'eventoscalendar',
             'icon' => 'fas fa-calendar-alt',
         ],
         

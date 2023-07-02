@@ -8,6 +8,8 @@
 @stop
 
 @section('content')
+
+    <a name="" id="" class="btn btn-primary btn-sm m-2" href="{{ route('programas.create')}}" role="button">Crear Programa</a>
     
     <div class="row d-flex flex-column">
 
@@ -18,7 +20,6 @@
             </div>            
         @endif
 
-        
             
         <div>
             <table id="datatables_programas" class="display shadow-sm text-capitalize" >
@@ -27,6 +28,7 @@
                     <tr>
                         <th data-orderable="true">#</th>
                         <th data-orderable="true">Programa</th>
+                        <th>Nivel de Formación</th>
                         <th>Versión</th>
                         <th>Estado</th>
                         <th>Horas</th>
@@ -43,6 +45,7 @@
                     <tr>
                         <td>{{$programa->Codigo}}</td>
                         <td>{{$programa->prog_Denominacion}}</td>
+                        <td>{{$programa->prog_NivelFormacion}}</td>
                         <td>{{$programa->prog_version}}</td>                        
                         <td>
                             @if ( $programa->prog_Estado == 'Inactivo')
@@ -89,6 +92,7 @@
 @stop
 
 @section('css')
+    
     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
     {{-- datatables --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
@@ -109,7 +113,7 @@
 
    <script>
         const dataTableOpciones = {            
-            "order": [[ 0, 'asc' ], [ 1, 'asc' ]],                        
+            "order": [[ 0, 'asc' ]],                        
         }
 
         $(document).ready(function () {

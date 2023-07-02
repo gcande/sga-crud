@@ -34,38 +34,45 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label">Programa:</label>
-                            <input type="text" name="prog_Denominacion" class="form-control" placeholder="Programa" value="{{$dato->prog_Denominacion}}" >
+                            <input type="text" name="prog_Denominacion" class="form-control" placeholder="Programa" value="{{$dato->prog_Denominacion}}" required >
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Versión:</label>
-                            <input type="number" name="prog_version" class="form-control" placeholder="Versión" value="{{$dato->prog_version}}" >
+                            <input type="number" name="prog_version" class="form-control" placeholder="Versión" value="{{$dato->prog_version}}" required >
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             {{-- <strong>Estado:</strong> --}}
                             {{-- <input type="text" name="prog_Estado" class="form-control" placeholder="Estado" value="{{$dato->prog_Estado}}"  >  --}}
                             <label class="form-label">Estado:</label>
-                            <select name="prog_Estado" class="form-select" id="">
+                            <select name="prog_Estado" class="form-select" id="" required >
                                 <option selected value=""> Elige el estado </option>
                                 <option value="Activo" @selected("Activo" == $dato->prog_Estado)>Activo</option>
                                 <option value="Inactivo" @selected("Inactivo" == $dato->prog_Estado) >Inactivo</option>
                             </select>
-
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6">                        
+                            <label class="form-label">Nivel De Formación:</label>
+                            <select name="prog_NivelFormacion" class="form-select" id="">
+                                <option selected value=""> Elige el nivel </option>
+                                <option value="Tecnico" >Técnico</option>
+                                <option value="Tecnologo">Tecnólogo</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
                             <label class="form-label">Horas:</label>
-                            <input type="number" name="prog_HorasEstimadas" class="form-control" placeholder="Horas" value="{{$dato->prog_HorasEstimadas}}" >
+                            <input type="number" name="prog_HorasEstimadas" class="form-control" placeholder="Horas" value="{{$dato->prog_HorasEstimadas}}" required >
                         </div>
-                        <div class="col-md-3">
-                            <label class="form-label">Creditos:</label>
-                            <input type="number" name="prog_Creditos" class="form-control" placeholder="Creditos" value="{{$dato->prog_Creditos}}">
+                        <div class="col-md-4">
+                            <label class="form-label">Créditos:</label>
+                            <input type="number" name="prog_Creditos" class="form-control" placeholder="Créditos" value="{{$dato->prog_Creditos}}" required >
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label class="form-label">Meses:</label>
-                            <input type="number" name="prog_DuracionMeses" class="form-control" placeholder="Meses" value="{{$dato->prog_DuracionMeses}}" >
+                            <input type="number" name="prog_DuracionMeses" class="form-control" placeholder="Meses" value="{{$dato->prog_DuracionMeses}}" required >
                         </div>
                         <div class="col-md-12">
                             <label class="form-label">Descripción:</label>
-                            <textarea class="form-control" style="height:100px" name="prog_Descripcion" placeholder="Descripción...">{{$dato->prog_Descripcion}}</textarea>
+                            <textarea class="form-control" style="height:100px" name="prog_Descripcion" placeholder="Descripción..." required >{{$dato->prog_Descripcion}}</textarea>
                         </div>
 
                         

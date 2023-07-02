@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventoController;
 use App\Models\TblPrograma;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -19,10 +20,15 @@ use App\Http\Controllers\ProgramaController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('programas', function () {
+    return view('programas');
+})->name('programasRuta');
+
 
 
 //controladar de recursos
 Route::resource('programas', ProgramaController::class);
+// Route::resource('eventoscalendar', EventoController::class);
 
 // Route::resource('editarprograma','TblPrograma');
 
@@ -31,6 +37,13 @@ Route::resource('programas', ProgramaController::class);
 // })->name('crearprograma');
 
 
+
+//rutas fullcalendar
+Route::get('/evento', [App\Http\Controllers\EventoController::class, 'index']);
+Route::get('/evento/mostrar', [App\Http\Controllers\EventoController::class, 'show']);
+Route::post('/evento/agregar', [App\Http\Controllers\EventoController::class, 'store']);
+Route::post('/evento/editar/{id}', [App\Http\Controllers\EventoController::class, 'edit']);
+Route::post('/evento/borrar/{id}', [App\Http\Controllers\EventoController::class, 'destroy']);
 
 Auth::routes();
 

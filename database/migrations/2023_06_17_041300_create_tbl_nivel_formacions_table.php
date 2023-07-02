@@ -14,9 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tbl_nivel_formacions', function (Blueprint $table) {
-            $table->id('Codigo');
-            $table->string('niv_Denominacion',255)->default(0);
-            $table->timestamps();
+            
+            $table->bigIncrements('Codigo');
+            // $table->string('niv_Denominacion',255)->default(0);
+            $table->enum('niv_Denominacion',['Tecnico','Tecnologo'])->nullable();
+            // $table->timestamps();
         });
     }
 

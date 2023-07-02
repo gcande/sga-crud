@@ -26,39 +26,48 @@
             @csrf            
                 <div class="row g-3">                    
                     <div class="col-md-6">
-                        <label>Programa:</label>
-                        <input type="text" name="prog_Denominacion" class="form-control" placeholder="Programa" >
+                        <label class="form-label" >Programa:</label>
+                        <input type="text" name="prog_Denominacion" class="form-control" placeholder="Programa" required >
                     </div>
                     <div class="col-md-6">
                         <label>Versión:</label>
-                        <input type="number" name="prog_Version" class="form-control" placeholder="Versión" >
+                        <input type="number" name="prog_Version" class="form-control" placeholder="Versión" required >
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         {{-- <strong>Estado:</strong>
                         <input type="text" name="prog_Estado" class="form-control" placeholder="Estado" > --}}
                         <label class="form-label">Estado:</label>
-                        <select name="prog_Estado" class="form-select" id="">
+                        <select name="prog_Estado" class="form-select" id="" required>
                             <option selected value=""> Elige el estado </option>
                             <option class="bg-success" value="Activo">Activo</option>
                             <option class="bg-danger" value="Inactivo">Inactivo</option>
                         </select>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6">                        
+                        <label class="form-label">Nivel De Formación:</label>
+                        <select name="prog_NivelFormacion" class="form-select" id="">
+                            <option selected value=""> Elige el nivel </option>
+                            <option value="Técnico">Técnico</option>
+                            <option value="Tecnólogo">Tecnólogo</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
                         <label>Horas:</label>
-                        <input type="number" name="prog_HorasEstimadas" class="form-control" placeholder="Horas" >
+                        <input type="number" name="prog_HorasEstimadas" class="form-control" placeholder="Horas" required >
                     </div>
-                    <div class="col-md-3">
-                        <label>Creditos:</label>
-                        <input type="number" name="prog_Creditos" class="form-control" placeholder="Creditos" >
+                    <div class="col-md-4">
+                        <label>Créditos:</label>
+                        <input type="number" name="prog_Creditos" class="form-control" placeholder="Créditos" required >
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <label>Meses:</label>
-                        <input type="number" name="prog_DuracionMeses" class="form-control" placeholder="Meses" >
+                        <input type="number" name="prog_DuracionMeses" class="form-control" placeholder="Meses" required >
                     </div>
                     <div class="col-md-12">
                         <label>Descripción:</label>
-                        <textarea class="form-control" style="height:100px" name="prog_Descripcion" placeholder="Descripción..."></textarea>
+                        <textarea class="form-control" style="height:100px" name="prog_Descripcion" placeholder="Descripción..." required ></textarea>
                     </div>
 
                     

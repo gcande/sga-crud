@@ -14,11 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tbl_eventos', function (Blueprint $table) {
-            $table->id('Codigo');
-            $table->date('even_Inicio');
-            $table->time('even_Hora_Inicio');
-            $table->date('even_Fin');
-            $table->time('even_Hora_Fin');
+            $table->id();
+            $table->string('title');
+            $table->text("descripcion");
+
+            $table->dateTime("start");
+            $table->dateTime("end");
+            
             $table->unsignedBigInteger('Codigo_resultado_aprendizaje');
             $table->unsignedBigInteger('Codigo_instructor');
             $table->unsignedBigInteger('Codigo_ficha');

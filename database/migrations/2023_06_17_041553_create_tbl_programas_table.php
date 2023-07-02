@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use PhpParser\Node\NullableType;
 
 return new class extends Migration
 {
@@ -14,6 +15,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tbl_programas', function (Blueprint $table) {
+            
             $table->id('Codigo');
             $table->string('prog_Denominacion',300);
             $table->integer('prog_version');
@@ -22,7 +24,9 @@ return new class extends Migration
             $table->string('prog_Creditos',45);
             $table->string('prog_Descripcion',1000);
             $table->string('prog_DuracionMeses',45);
-            // $table->unsignedBigInteger('Codigo_nivel');//llave primaria
+            $table->enum('prog_NivelFormacion',['Técnico','Tecnólogo'])->nullable();
+
+            // $table->unsignedBigInteger('Codigo_nivel')->nullable();//llave foranea
             // $table->foreign('Codigo_nivel')->references('Codigo')->on('tbl_nivel_formacions');//relacion
             $table->timestamps();
         });

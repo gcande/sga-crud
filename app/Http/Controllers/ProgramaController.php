@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\TblPrograma;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use Illuminate\Http\RedirectResponse;
+// use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ProgramaController extends Controller
 {
@@ -15,6 +16,7 @@ class ProgramaController extends Controller
     public function index():View
     {
         $programas = TblPrograma::get();
+        
         return view('programas',['programas' => $programas]);
     }
 
@@ -55,10 +57,7 @@ class ProgramaController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(TblPrograma $tblPrograma, string $Codigo):View
-    {
-        // dd($tblPrograma->all()) ;      
-        // return view('editarprograma', ['tblPrograma'=>$tblPrograma]);
-
+    {        
         // dd($tblPrograma->where('Codigo', $Codigo)->get() );
 
         $dato = $tblPrograma->where('Codigo', $Codigo)->get();        
@@ -71,10 +70,7 @@ class ProgramaController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-     {
-        // $tblPrograma->update($request->all());
-        // return redirect()->route('programas.index')->with('success','Programa Actualizado Exitoxamente¡');
-
+     {      
         // dd( TblPrograma::find($id) );
         // dd( $request -> input() );
 
@@ -96,14 +92,14 @@ class ProgramaController extends Controller
         $programa->prog_DuracionMeses = $request->prog_DuracionMeses;
         
         if( $programa->save() ) {
-         return view('home')->with('success','Programa Actualizado');
+         return redirect()->route('programas.index')->with('success','Programa Actualizado');
         }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id):RedirectResponse
     {
         // $tblPrograma->delete();
         // return redirect()->route('programas.index');
@@ -111,7 +107,6 @@ class ProgramaController extends Controller
         
         $programa = TblPrograma::find($id);
         // dd(TblPrograma::find($id));
-
         $programa->delete();
         return redirect()->route('programas.index')->with('success','Programa eliminado exitosamente') ;
         

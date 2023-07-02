@@ -11,5 +11,6 @@ class TblPrograma extends Model
 
     protected $primaryKey = 'Codigo';
 
-    protected $fillable = ['prog_Denominacion','prog_Version','prog_Estado','prog_HorasEstimadas','prog_Creditos','prog_Descripcion','prog_DuracionMeses'];
+    protected $fillable = ['prog_Denominacion','prog_Version','prog_Estado','prog_HorasEstimadas','prog_Creditos',
+                            'prog_Descripcion','prog_DuracionMeses','prog_NivelFormacion'];
 }
