@@ -31,7 +31,7 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
-        // request()->validate(Evento::$rules);//validacion
+        request()->validate(Evento::$rules);//validacion
         $request = Evento::create($request->all());
         // dd($request->all());
         // return redirect()->route('eventoscalendar.index');
@@ -65,7 +65,9 @@ class EventoController extends Controller
      */
     public function update(Request $request, Evento $evento)
     {
-        //
+        request()->validate(Evento::$rules);
+        $evento->update($request->all());
+        return response()->json($evento);
     }
 
     /**

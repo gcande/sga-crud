@@ -101,9 +101,7 @@
 @section('js')
 <!-- SweetAlert2 -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    {{-- <script>
-        import swal from 'sweetalert';
-    </script> --}}
+    
 
     {{-- jQuery --}}
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

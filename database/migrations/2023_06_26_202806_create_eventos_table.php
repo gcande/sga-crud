@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("title",255);
             $table->text("descripcion");
+            $table->enum('color',['red','blue','green'])->nullable();
 
             $table->dateTime("start");
             $table->dateTime("end");

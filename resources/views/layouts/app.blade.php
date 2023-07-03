@@ -11,7 +11,10 @@
         
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">    
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">  
+    
+    {{-- guardando la url de sitio --}}
+    
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -76,7 +79,6 @@
             </div>
         </nav>
 
-        {{-- <script src="{{ asset('js/eventos.js') }}"></script> --}}
         <main class="py-4">
             @yield('content')
         </main>
