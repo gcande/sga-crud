@@ -65,15 +65,38 @@ document.addEventListener('DOMContentLoaded', function() {
         color: color // Asignamos el color al evento
       });
 
-      enviarDatos("/evento/agregar");         
+      enviarDatos("/evento/agregar");
+
+      // Mostrar alerta de éxito después de guardar
+    Swal.fire({
+      icon: 'success',
+      title: 'Guardado',
+      text: 'El evento ha sido guardado exitosamente.'
+    });
+               
     });
 
     document.getElementById("btnEliminar").addEventListener("click", function(){
-      enviarDatos("/evento/borrar/" + formulario.id.value);    
+      enviarDatos("/evento/borrar/" + formulario.id.value);
+      
+      // alerta de éxito después de eliminar
+    Swal.fire({
+      icon: 'error',
+      title: 'Eliminado',
+      text: 'El evento ha sido eliminado exitosamente.'
+    });
       
     });
     document.getElementById("btnModificar").addEventListener("click", function(){
-      enviarDatos("/evento/actualizar/" + formulario.id.value);    
+      enviarDatos("/evento/actualizar/" + formulario.id.value);
+
+      // alerta de éxito después de modificar
+    Swal.fire({
+      icon: 'success',
+      title: 'Modificado',
+      text: 'El evento ha sido modificado exitosamente.'
+    });
+          
     });
 
     function enviarDatos(url){
@@ -84,7 +107,9 @@ document.addEventListener('DOMContentLoaded', function() {
       axios.post(nuevaURL, datos).
       then(
         (respuesta)=>{
-          calendar.refetchEvents();          
+          calendar.refetchEvents(); 
+          
+          //oculta el modal
           $("#evento").modal("hide");
         }
         ).catch(

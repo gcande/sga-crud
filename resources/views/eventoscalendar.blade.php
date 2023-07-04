@@ -32,13 +32,14 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/locales-all.min.js"></script>
 
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
     <script src="{{ asset('js/eventos.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script type="text/javascript">
       var baseURL = {!! json_encode(url('/')) !!};
     </script>
-
 </head>
 <body>  
   <!-- Modal trigger button -->
