@@ -61,7 +61,14 @@
                         <td>{{$programa->prog_DuracionMeses}}</td>
 
                         <td class="d-flex">
-                            <a href="{{ route('programas.edit', $programa) }}" class="btn btn-primary btn-sm mr-2" onclick="">Editar</a>
+                            <a href="{{ route('programas.edit', $programa) }}" 
+                                class="btn btn-primary btn-sm mr-2" 
+                                onclick=""
+                                style="width: 30px; height: 30px; border-radius: 50%"
+                            >
+                                <i class="far fa-edit"></i>
+                            </a>
+
                             <form action="{{ route('programas.destroy', $programa) }}" method="POST" class="d-inline" >
                                 @csrf
                                 @method('DELETE')
@@ -75,7 +82,10 @@
                                                  then((eliminar) => { if (eliminar){form.submit();} 
                                                  else {swal('Elemento no eliminado');}});
                                                  "
-                                        >Eliminar</button>
+                                        style="width: 30px; height: 30px; border-radius: 50%"
+                                        >
+                                        <i class="fas fa-trash-alt"></i>
+                                </button>
                             </form>
                         </td>
                     </tr>           
