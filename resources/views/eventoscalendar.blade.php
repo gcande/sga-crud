@@ -20,7 +20,6 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-
             
             <form action="" id="formularioEventos" >
                 {{-- {!! csrf_field() !!} --}}
@@ -39,7 +38,7 @@
                   <div class="mb-2">
                     <label for="color" class="form-label ">Color</label>
                     <select id="color" name="color" required>
-                      <option selected value="">Elige un color</option>
+                      <option class="form-select" selected value="">Elige un color</option>
                       <option value="red">Rojo</option>
                       <option value="blue">Azul</option>
                       <option value="green">Verde</option>
@@ -61,7 +60,6 @@
                     <label for="end" class="form-label">Final</label>
                     <input type="date"
                       class="form-control" name="end" id="end" aria-describedby="helpId" placeholder="2010-10-10">
-                      {{-- <small>Año-Mes-Día</small> --}}
                   </div>
                 </form>                    
                 
@@ -70,7 +68,7 @@
               <button type="button" class="btn btn-success btn-sm" id="btnGuardar">Guardar</button>
               <button type="button" class="btn btn-warning btn-sm" id="btnModificar">Modificar</button>
               <button type="button" class="btn btn-danger btn-sm" id="btnEliminar">Eliminar</button>
-              <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+              {{-- <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button> --}}
           </div>
       </div>
   </div>
