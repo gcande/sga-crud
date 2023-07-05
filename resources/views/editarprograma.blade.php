@@ -1,12 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'Crear Programas')
+@section('title', 'editar Programas')
+@section('content_header')
+    <h1>Editar Programa </h1>    
+@stop
 
 @section('content')
     <div class="row d-flex flex-column" style="margin: 0 100px">
         <div class="col-12">
             <div>
-                <h2>Editar Programa</h2>                
+                <h2></h2>                
             </div>        
         </div>
 

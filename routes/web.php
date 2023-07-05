@@ -30,7 +30,9 @@ Route::get('programas', function () {
 Route::resource('programas', ProgramaController::class);
 // Route::resource('eventoscalendar', EventoController::class);
 
-// Route::resource('editarprograma','TblPrograma');
+// Route::get('editarprograma', function() {
+//     return view('editarprograma');
+// })->name('editarprog');
 
 // Route::get('/programas/crearprograma', function() {
 //     return view('crearprograma');
