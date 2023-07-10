@@ -16,8 +16,10 @@ class ProgramaController extends Controller
     public function index():View
     {
         $programas = TblPrograma::get();
+
+        // $conteoProgramas = TblPrograma::count();
         
-        return view('programas',['programas' => $programas]);
+        return view('programas', ['programas' => $programas]);
     }
 
     /**

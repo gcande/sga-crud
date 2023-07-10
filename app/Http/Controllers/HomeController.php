@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\TblPrograma;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $usersCount = User::count();
+        $conteoProgramas = TblPrograma::count();
+        return view('home', ['conteoProgramas' => $conteoProgramas, 'usersCount' => $usersCount]);
+
+        // return view('home');
     }
 }

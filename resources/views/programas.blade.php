@@ -15,12 +15,18 @@
 
         {{-- mensaje de programa agregado --}}
         @if (Session::get('success'))
-            <div class="alert alert-success mt-2">
+            {{-- <div class="alert alert-success mt-2">
                 <strong>{{Session::get('success')}}</strong>
-            </div>            
+            </div>  --}}
+            {{-- <x-adminlte-alert theme="success" title="exitoso">
+                <strong>{{Session::get('success')}}</strong>
+            </x-adminlte-alert>     --}}
+            <x-adminlte-card title="Success" theme="success" icon="fas fa-check" removable collapsible>
+                <strong>{{Session::get('success')}}</strong>
+            </x-adminlte-card>       
         @endif
 
-            
+    
         <div>
             <table id="datatables_programas" class="display shadow-sm text-capitalize class="text-center" >
 

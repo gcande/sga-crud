@@ -3,27 +3,27 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     let formulario = document.querySelector("#formularioEventos");
-
     var calendarEl = document.getElementById('calendar');
+    
     var calendar = new FullCalendar.Calendar(calendarEl, {
       timeZone: 'UTC',
       initialView: 'dayGridMonth',
       locale:'es',
-      displayEventTime: false,
-      selectable: true,      
+      // displayEventTime: false,
+      // selectable: true,      
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,listWeek'
       },
       events: baseURL+"/evento/mostrar",
+      dayMaxEvents: true,//cuando hay demasiados eventos en un día, muestra el popover
 
       editable: true,
-      eventResize: function(info) { // se dispara cuando el usuario cambia el tamaño de un evento
+      eventResize: function(info) {
         alert(info.event.title + " ahora termina en " + info.event.end.toISOString());
-        console.log('holaa')
-        // puedes hacer otras acciones aquí, como guardar los cambios en una base de datos
-      },
+        
+      },  
 
       dateClick:function(info){  
         formulario.reset();
@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
             formulario.color.value = respuesta.data.color;
             formulario.start.value = respuesta.data.start;
             formulario.end.value = respuesta.data.end;
-
 
             //mostar el nodal             
             $("#evento").modal("show");
@@ -77,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
           });
       }else{
         enviarDatos("/evento/agregar");
-        // Mostrar alerta de éxito después de guardar
+        //alerta de éxito después de guardar
         Swal.fire({
           type: 'success',
           title: 'Guardado',
@@ -98,27 +97,20 @@ document.addEventListener('DOMContentLoaded', function() {
           enviarDatos("/evento/borrar/" + formulario.id.value);
         }else {
           swal('Elemento no eliminado');
-        }});
-      
-      
-      // alerta de éxito después de eliminar
-    // Swal.fire({
-    //   icon: 'error',
-    //   title: 'Eliminado',
-    //   text: 'El evento ha sido eliminado exitosamente.'
-    // });
-      
+        }});          
+          
     });
+
     document.getElementById("btnModificar").addEventListener("click", function(){
 
       enviarDatos("/evento/actualizar/" + formulario.id.value);
 
       // alerta de éxito después de modificar
-    Swal.fire({
-      type: 'success',
-      title: 'Modificado',
-      text: 'El evento ha sido modificado exitosamente.'
-    });
+      Swal.fire({
+        type: 'success',
+        title: 'Modificado',
+        text: 'El evento ha sido modificado exitosamente.'
+      });
           
     });
 
@@ -139,7 +131,6 @@ document.addEventListener('DOMContentLoaded', function() {
           error=>{if(error.response){console.log(error.response.data);}
           }
         )
-
     }
 
   });      

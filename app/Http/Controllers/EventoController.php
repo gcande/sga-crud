@@ -33,7 +33,7 @@ class EventoController extends Controller
     {
         request()->validate(Evento::$rules);//validacion
         $request = Evento::create($request->all());
-        // dd($request->all());
+        
         // return redirect()->route('eventoscalendar.index');
     }
 
