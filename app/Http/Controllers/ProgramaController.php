@@ -19,7 +19,7 @@ class ProgramaController extends Controller
 
         // $conteoProgramas = TblPrograma::count();
         
-        return view('programas', ['programas' => $programas]);
+        return view('programas.programas', ['programas' => $programas]);
     }
 
     /**
@@ -27,7 +27,7 @@ class ProgramaController extends Controller
      */
     public function create(): View
     {
-        return view('crearprograma');
+        return view('programas.crearprograma');
     }
 
     /**
@@ -64,7 +64,7 @@ class ProgramaController extends Controller
 
         $dato = $tblPrograma->where('Codigo', $Codigo)->get();        
         
-        return view('editarprograma', ['programa'=> $dato]);
+        return view('programas.editarprograma', ['programa'=> $dato]);
         
     }
 

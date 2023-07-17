@@ -5,6 +5,7 @@ use App\Models\TblPrograma;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProgramaController;
+use App\Http\Controllers\UsuariosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +27,11 @@ Route::get('programas', function () {
 
 
 
-//controladar de recursos
+//rutas Programas
 Route::resource('programas', ProgramaController::class);
-// Route::resource('eventoscalendar', EventoController::class);
+
+//rutas usuarios
+Route::resource('usuarios', UsuariosController::class);
 
 // Route::get('editarprograma', function() {
 //     return view('editarprograma');
