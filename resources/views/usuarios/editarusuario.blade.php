@@ -35,22 +35,22 @@
                         <input type="text" name="email" class="form-control" placeholder="Correo" value="{{$usuario->email}}" required >
                     </div>
 
-                    <div class="col-md-6">
-                        <label for="role">Rol:</label>
-                        <select name="role" class="form-select" required>
+                    <div class="col-md-12">
+                        <label for="role_id">Rol:</label>
+                        <select name="role_id" class="form-select" required>
                             {{-- <option selected value=""> Elige el Rol </option> --}}
                             @foreach ($roles as $role)
-                                <option value="{{ $role->name }}" {{ $usuario->hasRole($role->name) ? 'selected' : '' }} >
+                                <option value="{{ $role->id }}" {{ $usuario->hasRole($role->name) ? 'selected' : '' }} >
                                     {{$role->name}}
                                 </option>
                             @endforeach
                         </select>                  
                     </div>
                  
-                    <div class="col-md-6">
+                    {{-- <div class="col-md-6">
                         <label>Contraseña:</label>
                         <input type="password " name="password" class="form-control" placeholder="contraseña" value="{{$usuario->password}}" required >
-                    </div>                  
+                    </div>                   --}}
                                       
                 </div>               
                 

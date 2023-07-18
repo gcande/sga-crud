@@ -16,6 +16,13 @@
 @stop
 
 @section('content')
+        @if (session()->has('acceso_denegado'))      
+            {{-- <x-adminlte-callout theme="danger" removable >{{ session('acceso_denegado') }}</x-adminlte-callout> --}}
+            <x-adminlte-card title="Alerta" theme="danger" theme-mode="outline"
+                icon="fas fa-lg fa-envelope" header-class="text-uppercase rounded-bottom border-danger" removable>
+                {{ session('acceso_denegado') }}
+            </x-adminlte-card>
+        @endif
 
     <div class="row g-3">
 

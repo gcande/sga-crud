@@ -36,15 +36,15 @@
                         </div>
     
                         <div class="col-md-6">                        
-                            <label for="role">Rol:</label>
-                        <select name="role" class="form-select" required>
-                            <option selected value=""> Elige el Rol </option>
-                            @foreach ($roles as $role)
-                                <option value="{{ $role->name }}" >
-                                    {{$role->name}}
-                                </option>
-                            @endforeach
-                        </select> 
+                            <label for="role_id">Rol:</label>
+                            <select name="role_id" class="form-select" required>
+                                <option selected value=""> Elige el Rol </option>
+                                @foreach ($roles as $role)
+                                    <option value="{{ $role->id }}" >
+                                        {{$role->name}}
+                                    </option>
+                                @endforeach
+                            </select> 
                         </div>                        
     
                         <div class="col-md-6">

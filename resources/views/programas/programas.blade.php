@@ -8,8 +8,16 @@
 @stop
 
 @section('content')
+    @if (session()->has('acceso_denegado'))      
+    <x-adminlte-card title="Alerta" theme="danger" theme-mode="outline"
+        icon="fas fa-lg fa-envelope" header-class="text-uppercase rounded-bottom border-danger" removable>
+        {{ session('acceso_denegado') }}
+    </x-adminlte-card>
+    @endif
 
-    <a name="" id="" class="btn btn-primary btn-sm m-2" href="{{ route('programas.create')}}" role="button">Crear Programa</a>
+    @role('admin')
+        <a name="" id="" class="btn btn-primary btn-sm m-2" href="{{ route('programas.create')}}" role="button">Crear Programa</a>
+    @endrole
     
     <div class="row d-flex flex-column">
 
@@ -57,13 +65,14 @@
                             <td>{{$programa->prog_Descripcion}}</td>
                             <td>{{$programa->prog_DuracionMeses}}</td>    
                             <td class="d-flex">
-                                <a href="{{ route('programas.edit', $programa) }}" 
-                                    class="btn btn-primary btn-sm mr-2" 
-                                    onclick=""
-                                    style="width: 30px; height: 30px; border-radius: 50%"
-                                >
-                                    <i class="far fa-edit"></i>
-                                </a>
+                                @role('admin')
+                                    <a href="{{ route('programas.edit', $programa) }}" 
+                                        class="btn btn-primary btn-sm mr-2" 
+                                        onclick=""
+                                        style="width: 30px; height: 30px; border-radius: 50%"
+                                    >
+                                        <i class="far fa-edit"></i>
+                                    </a>                               
     
                                 <form action="{{ route('programas.destroy', $programa) }}" method="POST" class="d-inline" >
                                     @csrf
@@ -83,6 +92,7 @@
                                             <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </form>
+                                @endrole
                             </td>
                         </tr>         
                         @endforeach

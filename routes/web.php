@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\EventoController;
-use App\Models\TblPrograma;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProgramaController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\EventoController;
+use App\Models\TblPrograma;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +25,10 @@ Route::get('programas', function () {
     return view('programas');
 })->name('programasRuta');
 
+// Route::get('usuarios', function () {
+//     return view('programas');
+// })->name('usuarios');
+
 
 
 //rutas Programas
@@ -32,6 +36,7 @@ Route::resource('programas', ProgramaController::class);
 
 //rutas usuarios
 Route::resource('usuarios', UsuariosController::class);
+
 
 // Route::get('editarprograma', function() {
 //     return view('editarprograma');

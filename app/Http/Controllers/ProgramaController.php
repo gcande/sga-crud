@@ -15,19 +15,29 @@ class ProgramaController extends Controller
      */
     public function index():View
     {
-        $programas = TblPrograma::get();
-
-        // $conteoProgramas = TblPrograma::count();
-        
-        return view('programas.programas', ['programas' => $programas]);
+        if (auth()->user()->hasPermissionTo('programas.index')) {
+            $programas = TblPrograma::get();
+            // $conteoProgramas = TblPrograma::count();     
+            return view('programas.programas', ['programas' => $programas]);
+        } else {
+            // Almacena un mensaje en la sesión
+            session()->flash('acceso_denegado', 'Acceso denegado');
+            return redirect()->route('home'); // Redirige a la página anterior
+        }
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): View
+    public function create()
     {
-        return view('programas.crearprograma');
+        if (auth()->user()->hasPermissionTo('programas.create')) {
+            return view('programas.crearprograma');
+        } else {
+            // Almacena un mensaje en la sesión
+            session()->flash('acceso_denegado', 'Acceso denegado');
+            return redirect()->route('programas.index'); // Redirige a la página anterior
+        }
     }
 
     /**

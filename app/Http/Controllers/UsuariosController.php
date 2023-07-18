@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-
 use Spatie\Permission\Models\Role;
 
 
@@ -15,13 +14,18 @@ class UsuariosController extends Controller
      */
     public function index()
     {
+        if (auth()->user()->hasPermissionTo('usuarios.index')) {
         $usuarios = User::get();
         // $role = Role::get();
         $role = Role::pluck('name', 'id')->all();
 
-
         //carpeta usuario con vista usuario -> usuarios.usuarios
         return view('usuarios.usuarios', ['usuarios'=>$usuarios, 'role'=>$role]);
+        } else {
+            // Almacena un mensaje en la sesión
+            session()->flash('acceso_denegado', 'Acceso denegado');
+            return redirect()->route('home'); // Redirige a la página anterior
+        }
     }
 
     /**
@@ -29,8 +33,14 @@ class UsuariosController extends Controller
      */
     public function create()
     {
+        if (auth()->user()->hasPermissionTo('usuarios.create')) {
         $roles = Role::all();
         return view('usuarios.crearusuario', ['roles'=>$roles]);
+    } else {
+        // Almacena un mensaje en la sesión
+        session()->flash('acceso_denegado', 'Acceso denegado');
+        return redirect()->route('home'); // Redirige a la página anterior
+    }
     }
 
     /**
@@ -45,7 +55,10 @@ class UsuariosController extends Controller
             'password' => 'required'
         ]);  
 
-        User::create($request->all());
+        $usuario = User::create($request->all());
+
+        $role = $request->input('role_id');
+        $usuario->assignRole($role);
         
 
         return redirect()->route('usuarios.index');
@@ -82,7 +95,7 @@ class UsuariosController extends Controller
         
 
         // se asigna el rol que viene del request al usuario
-        $usuario->syncRoles($request->input('role'));
+        $usuario->syncRoles($request->input('role_id'));
 
         return redirect()->route('usuarios.index');
     }
