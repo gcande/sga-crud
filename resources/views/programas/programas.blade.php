@@ -16,7 +16,7 @@
     @endif
 
     @role('admin')
-        <a name="" id="" class="btn btn-primary btn-sm m-2" href="{{ route('programas.create')}}" role="button">Crear Programa</a>
+        <a name="" id="" class="btn btn-secondary btn-sm m-2" href="{{ route('programas.create')}}" role="button">Crear Programa</a>
     @endrole
     
     <div class="row d-flex flex-column">
