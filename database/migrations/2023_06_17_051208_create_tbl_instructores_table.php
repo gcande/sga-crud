@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('tbl_instructores', function (Blueprint $table) {
             $table->id('Codigo');
             $table->integer('inst_Identificacion')->unique();
-            $table->string('inst_TipoID',40);
+            $table->string('inst_TipoID',40)->nullable();
             $table->string('inst_Nombres',45);
             $table->string('inst_Apellido',45);
             $table->string('inst_Direccion',255);

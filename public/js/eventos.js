@@ -14,16 +14,16 @@ document.addEventListener('DOMContentLoaded', function() {
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
-        right: 'dayGridMonth,timeGridWeek,listWeek'
+        right: 'dayGridMonth,listWeek'
       },
       events: baseURL+"/evento/mostrar",
       dayMaxEvents: true,//cuando hay demasiados eventos en un día, muestra el popover
 
-      editable: true,
-      eventResize: function(info) {
-        alert(info.event.title + " ahora termina en " + info.event.end.toISOString());
+      // editable: true,
+      // eventResize: function(info) {
+      //   alert(info.event.title + " ahora termina en " + info.event.end.toISOString());
         
-      },  
+      // },  
 
       dateClick:function(info){  
         formulario.reset();
