@@ -3,7 +3,7 @@
 @section('title', 'Crear Programas')
 
 @section('content')
-    <div class="row d-flex flex-column" style="margin: 0 100px">
+    <div class="card row d-flex flex-column p-3" style="margin: 0 100px">
         <div class="col-12">
             <div>
                 <h2>Crear Programa</h2>
@@ -74,7 +74,7 @@
                 </div>               
                 
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
-                    <button type="submit" class="btn btn-primary">Crear</button>
+                    <button type="submit" class="btn btn-primary">Crear programa</button>
                 </div>            
         </form>
 

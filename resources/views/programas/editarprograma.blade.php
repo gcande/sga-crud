@@ -2,14 +2,14 @@
 
 @section('title', 'editar Programas')
 @section('content_header')
-    <h1>Editar Programa </h1>    
+    {{-- <h1>Editar Programa </h1>     --}}
 @stop
 
 @section('content')
-    <div class="row d-flex flex-column" style="margin: 0 100px">
+    <div class="card row d-flex flex-column p-3" style="margin: 0 100px">
         <div class="col-12">
             <div>
-                <h2></h2>                
+                <h2>Editar Programa</h2>                
             </div>        
         </div>
 
@@ -82,7 +82,7 @@
                     </div>               
                     
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
-                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                        <button type="submit" class="btn btn-secondary">Actualizar</button>
                     </div>
                 
             </form>            

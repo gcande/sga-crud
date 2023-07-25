@@ -8,7 +8,7 @@
 
 @section('content')
 
-<a name="" id="" class="btn btn-primary btn-sm m-2" href="{{ route('usuarios.create') }}" role="button">Crear Usuario</a>
+<a name="" id="" class="btn btn-secondary btn-sm m-2" href="{{ route('usuarios.create') }}" role="button">Crear Usuario</a>
 
 <div class="card">
     <!-- DataTables -->

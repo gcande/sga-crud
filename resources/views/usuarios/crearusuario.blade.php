@@ -3,8 +3,8 @@
 @section('title', 'Crear Usuario')
 
 @section('content')
-    <div class="card row d-flex flex-column mt-2 p-2" style="margin: 0 100px">
-        <div class="card-header col-12">
+    <div class="card row d-flex flex-column p-3" style="margin: 0 100px">
+        <div class=" col-12">
             <div>
                 <h2>Crear Usuario</h2>
             </div>        
@@ -55,7 +55,7 @@
                     </div>               
                     
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
-                        <button type="submit" class="btn btn-primary">Crear Usuario</button>
+                        <button type="submit" class="btn btn-secondary">Crear Usuario</button>
                     </div>            
             </form>
         </div>

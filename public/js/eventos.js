@@ -9,21 +9,23 @@ document.addEventListener('DOMContentLoaded', function() {
       timeZone: 'UTC',
       initialView: 'dayGridMonth',
       locale:'es',
-      // displayEventTime: false,
-      // selectable: true,      
+      displayEventTime: false,
+      selectable: true,      
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
-        right: 'dayGridMonth,timeGridWeek,listWeek'
+        right: 'dayGridMonth,listWeek'
       },
       events: baseURL+"/evento/mostrar",
       dayMaxEvents: true,//cuando hay demasiados eventos en un día, muestra el popover
-
+      hiddenDays: [ 0 ], //domingo desabilitado
+      
       editable: true,
-      eventResize: function(info) {
-        alert(info.event.title + " ahora termina en " + info.event.end.toISOString());
+      eventResizableFromStart: true,
+      // eventResize: function(info) {
+      //   alert(info.event.title + " ahora termina en " + info.event.end.toISOString());
         
-      },  
+      // },  
 
       dateClick:function(info){  
         formulario.reset();
@@ -47,6 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
             formulario.color.value = respuesta.data.color;
             formulario.start.value = respuesta.data.start;
             formulario.end.value = respuesta.data.end;
+
+            formulario.horaInicio.value = respuesta.data.horaInicio;
+            formulario.horaFinal.value = respuesta.data.horaFinal;
 
             //mostar el nodal             
             $("#evento").modal("show");
