@@ -18,10 +18,15 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       events: baseURL+"/evento/mostrar",
       dayMaxEvents: true,//cuando hay demasiados eventos en un día, muestra el popover
+<<<<<<< HEAD
       hiddenDays: [ 0 ], //domingo desabilitado
       
       editable: true,
       eventResizableFromStart: true,
+=======
+
+      // editable: true,
+>>>>>>> f564cca56d1afe08c260923aab4363cc1c9ad431
       // eventResize: function(info) {
       //   alert(info.event.title + " ahora termina en " + info.event.end.toISOString());
         

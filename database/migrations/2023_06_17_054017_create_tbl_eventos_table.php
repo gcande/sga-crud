@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tbl_eventos', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
+            $table->id('Codigo');
+            $table->string("title",255);
             $table->text("descripcion");
             $table->enum('color',['red','blue','green'])->nullable();
 
