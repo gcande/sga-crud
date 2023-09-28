@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class tblAmbiente extends Model
+class tblFichaCaracterizacion extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['amb_Denominacion','amb_Cupo'];
+    protected $fillable = ['fich_Inicio','fich_Fin','fich_Etapa'];
 
     public function eventos()
     {
-        return $this->hasMany(Evento::class, 'Codigo_ambiente');
+        return $this->hasMany(Evento::class, 'Codigo_ficha');
     }
 }

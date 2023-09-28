@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tbl_eventos', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
+            $table->id('Codigo');
+            $table->string("title",255);
             $table->text("descripcion");
             $table->enum('color',['red','blue','green'])->nullable();
 
@@ -28,14 +28,10 @@ return new class extends Migration
             $table->unsignedBigInteger('Codigo_instructor')->nullable();
             $table->unsignedBigInteger('Codigo_ficha')->nullable();
             $table->unsignedBigInteger('Codigo_ambiente')->nullable();
-            $table->unsignedBigInteger('Codigo_competencia')->nullable();
-            
-            $table->foreign('Codigo_resultado_aprendizaje')->references('Codigo')->on('tbl_resultado_aprendizajes')->onDelete('set null');
-            $table->foreign('Codigo_instructor')->references('Codigo')->on('tbl_instructors')->onDelete('set null');
-            $table->foreign('Codigo_ficha')->references('Codigo')->on('tbl_ficha_caracterizacions')->onDelete('set null');
-            $table->foreign('Codigo_ambiente')->references('Codigo')->on('tbl_ambientes')->onDelete('set null');
-            $table->foreign('Codigo_competencia')->references('Codigo')->on('tbl_competencias')->onDelete('set null');
-            
+            $table->foreign('Codigo_resultado_aprendizaje')->references('Codigo')->on('tbl_resultado_aprendizajes');
+            $table->foreign('Codigo_instructor')->references('Codigo')->on('tbl_instructores');
+            $table->foreign('Codigo_ficha')->references('Codigo')->on('tbl_ficha_caracterizacions');
+            $table->foreign('Codigo_ambiente')->references('Codigo')->on('tbl_ambientes');
             $table->timestamps();
         });
     }

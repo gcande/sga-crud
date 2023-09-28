@@ -3,12 +3,10 @@
 @section('title', 'Usuarios')
 
 @section('content_header')
-    <h1>Usuarios</h1>    
+    <h1>Listas De Usuarios: </h1>    
 @stop
 
 @section('content')
-
-<p><strong>Usuarios Registrados: {{count($usuarios)}}</strong></p>
 
 <a name="" id="" class="btn btn-secondary btn-sm m-2" href="{{ route('usuarios.create') }}" role="button">Crear Usuario</a>
 
@@ -22,8 +20,6 @@
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>Rol</th>
-                    <th>fecha vencimiento</th>
-                    <th>Dias Restantes</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -35,15 +31,13 @@
                         <td>{{$usuario->name}}</td>
                         <td>{{$usuario->email}}</td>
                         <td>{{$usuario->roles()->first()->name ?? 'Sin rol'}}</td>
-                        <th> {{ $usuario->fechaVencida }}</th>
-                        <td>{{ $usuario->diasRestantes }} días-- prueba {{ $usuario->diasRestantesPrueba }}</td>
                         <td class="d-flex">
                             <a href="{{ route('usuarios.edit', $usuario) }}" 
                                 class="btn btn-primary btn-sm mr-2" 
                                 onclick=""
                                 style="width: 30px; height: 30px; border-radius: 50%"
                             >
-                                <i class="fas fa-pen"></i>
+                                <i class="far fa-edit"></i>
                             </a>
     
                             <form action="{{ route('usuarios.destroy', $usuario) }}" method="POST" class="d-inline" >
