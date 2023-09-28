@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('vig_Inicio');
             $table->date('vig_Fin');
             $table->text('vig_Objetos');    
-            $table->unsignedBigInteger('Codigo_red');
+            $table->unsignedBigInteger('Codigo_red')->nullable();
             $table->foreign('Codigo_red')->references('Codigo')->on('tbl_redes');
             $table->timestamps();
         });

@@ -20,6 +20,9 @@ return new class extends Migration
             $table->dateTime("start");
             $table->dateTime("end");
 
+            $table->time('horaInicio');
+            $table->time('horaFinal');
+
             $table->timestamps();
         });
     }

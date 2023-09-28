@@ -13,16 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_instructores', function (Blueprint $table) {
+        Schema::create('tbl_instructors', function (Blueprint $table) {
             $table->id('Codigo');
-            $table->integer('inst_Identificacion')->unique();
+            $table->integer('inst_Identificacion')->unique()->nullable();
             $table->string('inst_TipoID',40);
             $table->string('inst_Nombres',45);
             $table->string('inst_Apellido',45);
             $table->string('inst_Direccion',255);
             $table->string('inst_Correo',45)->unique();
             $table->string('inst_Telefono',45);
-            $table->unsignedBigInteger('Codigo_vigencia');
+            
+            $table->unsignedBigInteger('Codigo_vigencia')->nullable();
             $table->foreign('Codigo_vigencia')->references('Codigo')->on('tbl_vigencias');
             $table->timestamps();
         });
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_instructores');
+        Schema::dropIfExists('tbl_instructors');
     }
 };

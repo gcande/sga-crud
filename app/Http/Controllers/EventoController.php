@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evento;
+use App\Models\TblCompetencia;
+use App\Models\TblFichaCaracterizacion;
+use App\Models\TblInstructor;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -15,7 +18,16 @@ class EventoController extends Controller
      */
     public function index()
     {
-        return view('eventoscalendar');
+        $eventos = Evento::orderBy('start', 'desc')->get();
+        $fichas = TblFichaCaracterizacion::get();
+        $competencias = TblCompetencia::get();
+        $instructores = TblInstructor::get();
+
+        //cambiamos el formato de la fecha
+        foreach ($eventos as $evento) {
+            $evento->start = Carbon::parse($evento->start);
+        }
+        return view('eventoscalendar', ['eventos'=>$eventos, 'fichas'=> $fichas, 'competencias' => $competencias, 'instructores' => $instructores]);
     }
 
     /**
@@ -31,7 +43,8 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Evento::$rules);//validacion
+        request()->validate(Evento::$rules);        
+        
         $request = Evento::create($request->all());
         
         // return redirect()->route('eventoscalendar.index');
@@ -52,6 +65,9 @@ class EventoController extends Controller
     public function edit($id)
     {
         $evento = Evento::find($id);
+
+        //asignamos las relaciones de los modelos
+        $evento->load('fichaCaracterizacion', 'competencia', 'instructor');
 
         //reescribimos el formato de las fechas
         $evento->start = Carbon::createFromFormat('Y-m-d H:i:s', $evento->start)->format('Y-m-d');

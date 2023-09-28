@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tbl_modalidads', function (Blueprint $table) {
-            $table->id();
-            $table->string('mod_Denominacion',45);
+            $table->id('Codigo');
+            $table->string('mod_Denominacion',45)->nullable();
             $table->timestamps();
         });
     }

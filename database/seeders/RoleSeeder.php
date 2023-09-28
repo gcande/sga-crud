@@ -21,6 +21,7 @@ class RoleSeeder extends Seeder
         $role1 = Role::create(['name' => 'admin']);
         $role2 = Role::create(['name' => 'instructor']);
         $role3 = Role::create(['name' => 'aprendiz']);
+        $role4 = Role::create(['name' => 'gestor']);
         
         //permisos seccion usuarios
         Permission::create(["name" => "usuarios.usuarios"])->assignRole([$role1]);
@@ -30,7 +31,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'usuarios.destroy'])->assignRole([$role1]);
 
         // permisos seccion programas
-        Permission::create(['name' => 'programas.index'])->syncRoles([$role1,$role2,$role3]);
+        Permission::create(['name' => 'programas.index'])->syncRoles([$role1,$role2,$role3,$role4]);
         Permission::create(['name' => 'programas.create'])->assignRole([$role1]);
         Permission::create(['name' => 'programas.edit'])->assignRole([$role1]);
         Permission::create(['name' => 'programas.destroy'])->assignRole([$role1]);

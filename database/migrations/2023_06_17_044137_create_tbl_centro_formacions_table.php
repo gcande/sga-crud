@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('tbl_centro_formacions', function (Blueprint $table) {
             $table->id('Codigo');
             $table->string('cent_Denominacion');
-            $table->unsignedBigInteger('Codigo_regional');
+
+            $table->unsignedBigInteger('Codigo_regional')->nullable();
             $table->foreign('Codigo_Regional')->references('Codigo')->on('tbl_regionales');
+
             $table->timestamps();
         });
     }

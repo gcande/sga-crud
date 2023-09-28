@@ -1,10 +1,17 @@
 <?php
 
+use App\Http\Controllers\AmbienteController;
+use App\Http\Controllers\ArchivoController;
+use App\Http\Controllers\CentroController;
+use App\Http\Controllers\CompetenciaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProgramaController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\FichaController;
+use App\Http\Controllers\InstructoresController;
+use App\Http\Controllers\VigenciaController;
 use App\Models\TblPrograma;
 
 /*
@@ -25,10 +32,9 @@ Route::get('programas', function () {
     return view('programas');
 })->name('programasRuta');
 
-// Route::get('usuarios', function () {
-//     return view('programas');
-// })->name('usuarios');
-
+Route::get('regionales', function () {
+    return view('Regionales.regionales');
+});
 
 
 //rutas Programas
@@ -37,15 +43,29 @@ Route::resource('programas', ProgramaController::class);
 //rutas usuarios
 Route::resource('usuarios', UsuariosController::class);
 
+//rutas Competencias
+Route::resource('competencias', CompetenciaController::class);
 
-// Route::get('editarprograma', function() {
-//     return view('editarprograma');
-// })->name('editarprog');
+// rutas Instructores
+Route::resource('instructores', InstructoresController::class);
 
-// Route::get('/programas/crearprograma', function() {
-//     return view('crearprograma');
-// })->name('crearprograma');
+// rutas Fichas
+Route::resource('fichas', FichaController::class);
 
+// Centros
+Route::resource('centros', CentroController::class);
+
+// Ambientes
+Route::resource('ambientes', AmbienteController::class);
+
+// Vigencias
+Route::resource('vigencias', VigenciaController::class);
+
+// rutas subir archivos
+Route::get('/guardar-archivo-index', [ArchivoController::class, 'index']);
+Route::post('/guardar-archivo', [ArchivoController::class, 'guardar'])->name('guardar_archivo');
+Route::get('/descargar-archivo/{archivoId}', [ArchivoController::class,'descargar'])->name('descargar.archivo');
+Route::delete('/guardar-archivo/borrar/{archivoId}', [ArchivoController::class, 'destroy'])->name('eliminar.archivo');
 
 
 //rutas fullcalendar

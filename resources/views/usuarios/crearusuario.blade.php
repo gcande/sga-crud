@@ -2,9 +2,13 @@
 
 @section('title', 'Crear Usuario')
 
+@section('content_header')
+    <h1>Usuarios</h1>
+@stop
+
 @section('content')
-    <div class="card row d-flex flex-column mt-2 p-2" style="margin: 0 100px">
-        <div class="card-header col-12">
+    <div class="card row d-flex flex-column p-3" style="margin: 0 100px">
+        <div class=" col-12">
             <div>
                 <h2>Crear Usuario</h2>
             </div>        
@@ -35,7 +39,7 @@
                             <input type="text" name="email" class="form-control" placeholder="Correo" required >
                         </div>
     
-                        <div class="col-md-6">                        
+                        <div class="col-md-4">                        
                             <label for="role_id">Rol:</label>
                             <select name="role_id" class="form-select" required>
                                 <option selected value=""> Elige el Rol </option>
@@ -47,7 +51,11 @@
                             </select> 
                         </div>                        
     
-                        <div class="col-md-6">
+                        <div class="col-md-4">
+                            <label>Fecha de expiración:</label>
+                            <input type="datetime-local" name="fechaVencida" class="form-control" placeholder="Fecha" required >
+                        </div>                  
+                        <div class="col-md-4">
                             <label>Contraseña:</label>
                             <input type="password" name="password" class="form-control" placeholder="contraseña" required >
                         </div>                  
@@ -55,7 +63,7 @@
                     </div>               
                     
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
-                        <button type="submit" class="btn btn-primary">Crear Usuario</button>
+                        <button type="submit" class="btn btn-secondary">Crear Usuario</button>
                     </div>            
             </form>
         </div>
@@ -68,3 +76,7 @@
     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 @stop
+
+@section('js')
+    
+@endsection

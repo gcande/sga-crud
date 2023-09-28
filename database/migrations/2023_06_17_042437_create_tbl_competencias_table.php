@@ -15,14 +15,17 @@ return new class extends Migration
     {
         Schema::create('tbl_competencias', function (Blueprint $table) {
             $table->id('Codigo');
-            $table->text('comp_Denominacion');
-            $table->string('comp_VersionNCl',11);
-            $table->string('comp_DuracionEstimada',11);
+            $table->integer('comp_codigoCompetencia');
+            $table->text('comp_Denominacion')->nullable();
+            $table->string('comp_VersionNCl');
+            $table->string('comp_DuracionEstimada');
             $table->integer('comp_Creditos');
-            $table->integer('comp_Horas');
+            // $table->integer('comp_Horas');
             $table->integer('comp_Horas_FI');
-            $table->unsignedBigInteger('Codigo_programa');
+            
+            $table->unsignedBigInteger('Codigo_programa')->nullable();            
             $table->foreign('Codigo_programa')->references('Codigo')->on('tbl_programas');
+
             $table->timestamps();
         });
     }

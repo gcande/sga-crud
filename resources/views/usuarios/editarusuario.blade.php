@@ -1,9 +1,12 @@
 @extends('adminlte::page')
 
 @section('title', 'Crear Usuario')
+@section('content_header')
+  <h1>Usuarios</h1>
+@stop
 
 @section('content')
-    <div class="row d-flex flex-column" style="margin: 0 100px">
+    <div class="card row d-flex flex-column p-3" style="margin: 0 100px">
         <div class="col-12">
             <div>
                 <h2>Editar Usuario</h2>
@@ -55,7 +58,7 @@
                 </div>               
                 
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <button type="submit" class="btn btn-secondary">Actualizar Usuario</button>
                 </div>            
         </form>
 

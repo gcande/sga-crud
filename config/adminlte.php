@@ -107,7 +107,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'img' => [
             'path' => 'vendor/adminlte/dist/img/logoSena.png',
             'alt' => 'AdminLTE Preloader Image',
@@ -130,8 +130,8 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
-    'usermenu_header_class' => 'bg-primary',
+    'usermenu_header' => true,
+    'usermenu_header_class' => 'bg-success',
     'usermenu_image' => false,
     'usermenu_desc' => false,
     'usermenu_profile_url' => false,
@@ -313,50 +313,53 @@ return [
             'icon'        => 'fas fa-circle',            
         ],
         [
+            'text' => 'Archivos',
+            'url'  => '/guardar-archivo-index',
+            'icon' => 'fas fa-house-user',
+        ],
+        [
             'text' => 'Ambientes',
-            'url'  => 'admin',
+            'url'  => 'ambientes',
             'icon' => 'fas fa-house-user',
         ],
         [
             'text' => 'Regionales',
-            'url'  => 'admin',
+            'url'  => 'regionales',
             'icon' => 'fas fa-map',
         ],
         [
             'text' => 'Centros',
-            'url'  => 'admin',
+            'url'  => 'centros',
             'icon' => 'fas fa-synagogue',
         ],
-        [
-            'text' => 'Sedes',
-            'url'  => 'admin',
-            'icon' => 'fas fa-laptop-house',
-        ],
+        // [
+        //     'text' => 'Sedes',
+        //     'url'  => 'admin',
+        //     'icon' => 'fas fa-laptop-house',
+        // ],
         [
             'text' => 'Programas',
             'url'  => 'programas',
-            'icon' => 'fas fa-graduation-cap'
-            // 'submenu' => [
-            //             [
-            //                 'text' => 'Ver Programas',
-            //                 'url'  => 'programas',
-            //             ],
-            //             [
-            //                 'text' => 'Crear programa',
-            //                 'icon' => 'fas fa-pen',
-            //                 'url'  => 'programas/create',
-            //             ],
-            
-            // ]
+            'icon' => 'fas fa-graduation-cap',            
+        ],
+        [
+            'text' => 'Competencias',
+            'url'  => 'competencias',
+            'icon' => 'fas fa-paper-plane',            
         ],
         [
             'text' => 'Fichas',
-            'url'  => '/',
+            'url'  => 'fichas',
             'icon' => 'fas fa-tags',
         ],
         [
+            'text' => 'Vigencias',
+            'url'  => 'vigencias',
+            'icon' => 'fas fa-folder',
+        ],
+        [
             'text' => 'Instructores',
-            'url'  => '/',
+            'url'  => 'instructores',
             'icon' => 'fas fa-id-badge',
         ],
         [
@@ -365,7 +368,7 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'Horarios',
+            'text' => 'Eventos',
             'url'  => 'evento',
             'icon' => 'fas fa-calendar-alt',
         ],

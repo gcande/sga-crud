@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Spatie\Permission\Models\Role;
+use Carbon\Carbon;
 
 
 class UsuariosController extends Controller
 {
-    /**
+            /**
      * Display a listing of the resource.
      */
     public function index()
@@ -19,27 +22,52 @@ class UsuariosController extends Controller
         // $role = Role::get();
         $role = Role::pluck('name', 'id')->all();
 
-        //carpeta usuario con vista usuario -> usuarios.usuarios
-        return view('usuarios.usuarios', ['usuarios'=>$usuarios, 'role'=>$role]);
+        // se calcula los días restantes de vencimiento de cada usuario
+        // $usuarios->each(function ($usuario) {
+        //     $hoy = new DateTime();
+        //     dd($hoy);
+        //     $vencimiento = new DateTime($usuario->fechaVencida);
+        //     $diasRestantes = $hoy->diff($vencimiento);
+        //     // $dias = $diasRestantes->days;
+        //     $dias = $diasRestantes->format('%r%a');
+        //     // dd($dias);
+        //     $usuario->dias = $dias;            
+        // });
+        
+        $hoy = Carbon::now()->setTimezone('America/Bogota');
+        // $hoy = Carbon::parse('2020-01-01');
+        $usuarios->each(function ($usuario) use ($hoy) {
+            $vencimiento = Carbon::parse($usuario->fechaVencida);
+            // $vencimiento = Carbon::parse('2020-01-15');
+            // dd($hoy,$vencimiento);
+            $diasRestantes = $hoy->diffInDays($vencimiento->addDay(), true);
+            $usuario->diasRestantes = $diasRestantes;
+        });
+        
+        return view('usuarios.usuarios', ['usuarios'=>$usuarios, 'role'=>$role ]);
+
         } else {
             // Almacena un mensaje en la sesión
             session()->flash('acceso_denegado', 'Acceso denegado');
-            return redirect()->route('home'); // Redirige a la página anterior
+            return redirect()->route('home');
+            
         }
     }
-
+     
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
         if (auth()->user()->hasPermissionTo('usuarios.create')) {
+            
         $roles = Role::all();
         return view('usuarios.crearusuario', ['roles'=>$roles]);
+
     } else {
         // Almacena un mensaje en la sesión
         session()->flash('acceso_denegado', 'Acceso denegado');
-        return redirect()->route('home'); // Redirige a la página anterior
+        return redirect()->route('home'); 
     }
     }
 
@@ -52,7 +80,8 @@ class UsuariosController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required'
+            'password' => 'required',
+            'date' => 'nullable'
         ]);  
 
         $usuario = User::create($request->all());
@@ -111,4 +140,30 @@ class UsuariosController extends Controller
 
         return redirect()->route('usuarios.index');
     }
+
+    // FUNCIONES ADISIONALES
+//     public function usuariosVencidos() {
+//         //obtenemos todos los usuarios cuya fecha de vencimiento es anterior a la fecha actual
+//         $users = User::where('fechaVencida', '<', Carbon::now()->format('y-m-d'))->get();
+        
+//         foreach ($users as $user) {
+//             $user->delete();
+//         }
+//     }
+// public function diasRestantes(User $user) {
+//     if ($user->fechaVencida == null) {
+//         return null;
+//     }
+//     $hoy = Carbon::now();
+//     // Calculamos la diferencia en días
+//     $diferencia = $hoy->diffInDays($user->fechaVencida, false);
+
+//     if ($diferencia < 0) {
+//         return 0;
+//     }
+//     dd($diferencia);
+//     return $diferencia;
+// }
+
+
 }

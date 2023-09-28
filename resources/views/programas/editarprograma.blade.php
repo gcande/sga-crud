@@ -2,14 +2,14 @@
 
 @section('title', 'editar Programas')
 @section('content_header')
-    <h1>Editar Programa </h1>    
+    <h1>Programas</h1>    
 @stop
 
 @section('content')
-    <div class="row d-flex flex-column" style="margin: 0 100px">
+    <div class="card row d-flex flex-column p-3" style="margin: 0 100px">
         <div class="col-12">
             <div>
-                <h2></h2>                
+                <h2>Editar Programa</h2>                
             </div>        
         </div>
 
@@ -36,14 +36,18 @@
                 
                     <div class="row g-3">
                         <div class="col-md-6">
+                            <label class="form-label" >Código Programa:</label>
+                            <input type="number" name="prog_codigoPrograma" class="form-control" placeholder="Código" value="{{ $dato->prog_codigoPrograma }}" required >
+                        </div>
+                        <div class="col-md-6">
                             <label class="form-label">Programa:</label>
                             <input type="text" name="prog_Denominacion" class="form-control" placeholder="Programa" value="{{$dato->prog_Denominacion}}" required >
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label class="form-label">Versión:</label>
                             <input type="number" name="prog_version" class="form-control" placeholder="Versión" value="{{$dato->prog_version}}" required >
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             {{-- <strong>Estado:</strong> --}}
                             {{-- <input type="text" name="prog_Estado" class="form-control" placeholder="Estado" value="{{$dato->prog_Estado}}"  >  --}}
                             <label class="form-label">Estado:</label>
@@ -53,12 +57,12 @@
                                 <option value="Inactivo" @selected("Inactivo" == $dato->prog_Estado) >Inactivo</option>
                             </select>
                         </div>
-                        <div class="col-md-6">                        
+                        <div class="col-md-4">                        
                             <label class="form-label">Nivel De Formación:</label>
                             <select name="prog_NivelFormacion" class="form-select" id="">
                                 <option selected value=""> Elige el nivel </option>
-                                <option value="Tecnico" >Técnico</option>
-                                <option value="Tecnologo">Tecnólogo</option>
+                                <option value="Tecnico" @selected("Técnico" == $dato->prog_NivelFormacion) >Técnico</option>
+                                <option value="Tecnologo" @selected("Tecnólogo" == $dato->prog_NivelFormacion) >Tecnólogo</option>
                             </select>
                         </div>
                         <div class="col-md-4">
@@ -73,6 +77,30 @@
                             <label class="form-label">Meses:</label>
                             <input type="number" name="prog_DuracionMeses" class="form-control" placeholder="Meses" value="{{$dato->prog_DuracionMeses}}" required >
                         </div>
+
+                        <hr>
+                        <div class="col-md-4">
+                            <label>Etapa Lectiva:</label>
+                            <input type="number" name="prog_etapaLectiva" class="form-control" placeholder="Horas" value="{{ $dato->prog_etapaLectiva }}" >
+                        </div>
+                        <div class="col-md-4">
+                            <label>Etapa Productiva:</label>
+                            <input type="number" name="prog_etapaProductiva" class="form-control" placeholder="Horas" value="{{ $dato->prog_etapaProductiva }}" >
+                        </div>
+                        <div class="col-md-4">
+                            <label>Total Horas:</label>
+                            <input type="number" name="prog_totalHoras" class="form-control" placeholder="Horas" value="{{ $dato->prog_totalHoras }}" >
+                        </div>
+                        <div class="col-md-6">
+                            <label>Justificación:</label>
+                            <input type="text" name="prog_justificacion" class="form-control" placeholder="" value="{{ $dato->prog_justificacion }}" >
+                        </div>
+                        <div class="col-md-6">
+                            <label>Metodológia:</label>
+                            <input type="text" name="prog_metodologia" class="form-control" placeholder="" value="{{ $dato->prog_metodologia }}" >
+                        </div>
+                        
+
                         <div class="col-md-12">
                             <label class="form-label">Descripción:</label>
                             <textarea class="form-control" style="height:100px" name="prog_Descripcion" placeholder="Descripción..." required >{{$dato->prog_Descripcion}}</textarea>
@@ -82,7 +110,7 @@
                     </div>               
                     
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
-                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                        <button type="submit" class="btn btn-secondary">Actualizar</button>
                     </div>
                 
             </form>            

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TblNivelFormacion extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'Codigo';
 
     protected $fillable = ['niv_Denominacion'];
 }

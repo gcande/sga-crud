@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('tbl_resultado_aprendizajes', function (Blueprint $table) {
             $table->id('Codigo');
             $table->text('resul_Denominacion');
+
             $table->unsignedBigInteger('Codigo_competencias');
+            
             $table->foreign('Codigo_competencias')->references('Codigo')->on('tbl_competencias');
             $table->timestamps();
         });
